@@ -16,6 +16,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ui.Desktop", "Ui\Ui.Desktop
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Logic.Ui", "Logic\Logic.Ui\Logic.Ui.csproj", "{6456C4BA-E3A9-4640-BF4A-980345E84DF1}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "Docs", "{B84E9E02-0766-4FFB-8E8C-121E048738BA}"
+	ProjectSection(SolutionItems) = preProject
+		Documents\Mofeto.docx = Documents\Mofeto.docx
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
