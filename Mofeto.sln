@@ -21,6 +21,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "Docs", "{B84E9E02-0
 		Documents\Mofeto.docx = Documents\Mofeto.docx
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{97EDFCA0-2DA6-4AE0-9D1A-5022B382851E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests.LogicUI", "Tests\Tests.LogicUI\Tests.LogicUI.csproj", "{11D1D8F2-F6A4-4BFC-ACAF-F17D5DEB25F8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,6 +39,10 @@ Global
 		{6456C4BA-E3A9-4640-BF4A-980345E84DF1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6456C4BA-E3A9-4640-BF4A-980345E84DF1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6456C4BA-E3A9-4640-BF4A-980345E84DF1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{11D1D8F2-F6A4-4BFC-ACAF-F17D5DEB25F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{11D1D8F2-F6A4-4BFC-ACAF-F17D5DEB25F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{11D1D8F2-F6A4-4BFC-ACAF-F17D5DEB25F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{11D1D8F2-F6A4-4BFC-ACAF-F17D5DEB25F8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -42,6 +50,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{05D59922-30F3-42D4-A466-AE72A7A3B77A} = {38B60E6D-B59B-4F8C-A934-E8AE6A1CB7DD}
 		{6456C4BA-E3A9-4640-BF4A-980345E84DF1} = {A3CEA974-2576-4EB5-8327-55089A8D8D20}
+		{11D1D8F2-F6A4-4BFC-ACAF-F17D5DEB25F8} = {97EDFCA0-2DA6-4AE0-9D1A-5022B382851E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {81CB7E59-DFD2-4689-AD56-2917AB291C1A}
