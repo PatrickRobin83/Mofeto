@@ -27,7 +27,7 @@
             
         </StackPanel>
         
-        <ContentControl Margin="5,0,0,0" Grid.Row="1" Grid.Column="1" Content="{Binding SelectedViewModel}"/>
+        <ContentControl Margin="5,0,0,0" Grid.Row="0" Grid.Column="1" Content="{Binding SelectedViewModel}"/>
 
         <StackPanel Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right">
             <Button Content="Beenden" Width="150" Background="DarkRed" Foreground="GhostWhite" Height="30" Margin="5" Padding="5" Command="{Binding CloseCommand , Mode=OneWay}"></Button>
