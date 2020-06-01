@@ -1,7 +1,7 @@
 ﻿/*
 *----------------------------------------------------------------------------------
-*          Filename:	DashboardViewModel.cs
-*          Date:        2020.05.31 22:43:52
+*          Filename:	DashboardEntryViewModel.cs
+*          Date:        2020.06.01 17:15:07
 *          All rights reserved
 *
 *----------------------------------------------------------------------------------
@@ -11,31 +11,20 @@
 namespace Mofeto.DesktopApplication.ViewModels
 
 {
-    public class DashboardViewModel : BaseViewModel
+    public class DashboardEntryViewModel
     {
 
         #region Fields
 
-        private DashboardEntryViewModel dashboardEntryViewModel;
+        
 
         #endregion
 
         #region Properties
 
-        public DashboardEntryViewModel DashboardEntryViewModel
-        {
-            get => dashboardEntryViewModel;
-            set => dashboardEntryViewModel = value;
-        }
-
         #endregion
 
         #region Constructor
-
-        public DashboardViewModel()
-        {
-            DashboardEntryViewModel = new DashboardEntryViewModel();
-        }
 
         #endregion
 
@@ -48,6 +37,5 @@ namespace Mofeto.DesktopApplication.ViewModels
         #endregion
 
 
-        
     }
 }

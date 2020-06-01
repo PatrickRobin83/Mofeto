@@ -57,10 +57,20 @@
     </ApplicationDefinition>
     <Compile Include="Commands\CloseCommand.cs" />
     <Compile Include="Commands\OpenDashboardViewCommand.cs" />
+    <Compile Include="Models\Brand.cs" />
+    <Compile Include="Models\Car.cs" />
+    <Compile Include="Models\Entry.cs" />
+    <Compile Include="Models\FuelType.cs" />
+    <Compile Include="Models\ModelType.cs" />
+    <Compile Include="Models\ModelBase.cs" />
     <Compile Include="ViewModels\CarViewModel.cs" />
+    <Compile Include="ViewModels\DashboardEntryViewModel.cs" />
     <Compile Include="ViewModels\DashboardViewModel.cs" />
     <Compile Include="Views\CarView.xaml.cs">
       <DependentUpon>CarView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DashboardEntryView.xaml.cs">
+      <DependentUpon>DashboardEntryView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\DashboardView.xaml.cs">
       <DependentUpon>DashboardView.xaml</DependentUpon>
@@ -82,6 +92,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Views\CarView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DashboardEntryView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -116,8 +130,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Models\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

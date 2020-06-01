@@ -75,20 +75,22 @@ namespace Mofeto.DesktopApplication.ViewModels
         {
             Title = "Mofeto Desktop Application";
 
-            #region Command Initialisation
-
-            OpenCarViewCommand = new OpenCarViewCommand(this);
-            OpenDashboardViewCommand = new OpenDashboardViewCommand(this);
-            CloseCommand = new CloseCommand(this);
-
-            #endregion
-
             #region ViewModel initialisation
 
             carViewModel = new CarViewModel();
             dashboardViewModel = new DashboardViewModel();
 
             #endregion
+
+            SelectedViewModel = dashboardViewModel;
+
+            #region Command Initialisation
+
+            CloseCommand = new CloseCommand(this);
+
+            #endregion
+
+           
         }
         public void OpenCarView()
         {

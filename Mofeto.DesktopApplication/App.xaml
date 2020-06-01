@@ -15,6 +15,10 @@
             <views:DashboardView />
         </DataTemplate>
 
+        <DataTemplate DataType="{x:Type viewmodels:DashboardEntryViewModel}">
+            <views:DashboardEntryView />
+        </DataTemplate>
+
 
     </Application.Resources>
 </Application>

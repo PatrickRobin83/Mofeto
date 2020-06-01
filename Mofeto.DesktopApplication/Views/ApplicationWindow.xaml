@@ -15,20 +15,7 @@
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding Header}" FontSize="42" TextAlignment="Center"/>
-
-        <StackPanel Grid.Row="0" 
-                    Grid.Column="0" 
-                    Orientation="Vertical" 
-                    VerticalAlignment="Top" 
-                    HorizontalAlignment="Left">
-            <Button Content="Dashboard" Height="30" Margin="5" Command="{Binding OpenDashboardViewCommand}"></Button>
-            <Button Content="Auto Verwaltung" Height="30" Margin="5" Padding="5" Command="{Binding OpenCarViewCommand}"></Button>
-            
-        </StackPanel>
-        
-        <ContentControl Margin="5,0,0,0" Grid.Row="0" Grid.Column="1" Content="{Binding SelectedViewModel}"/>
-
+        <ContentControl Margin="5" Grid.Row="0" Grid.Column="1" Content="{Binding SelectedViewModel}"/>
         <StackPanel Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right">
             <Button Content="Beenden" Width="150" Background="DarkRed" Foreground="GhostWhite" Height="30" Margin="5" Padding="5" Command="{Binding CloseCommand , Mode=OneWay}"></Button>
         </StackPanel>
