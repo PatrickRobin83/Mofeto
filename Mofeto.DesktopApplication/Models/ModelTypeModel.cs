@@ -1,7 +1,7 @@
 ﻿/*
 *----------------------------------------------------------------------------------
-*          Filename:	FuelType.cs
-*          Date:        2020.06.01 14:52:47
+*          Filename:	ModelTypeModel.cs
+*          Date:        2020.06.01 14:52:56
 *          All rights reserved
 *
 *----------------------------------------------------------------------------------
@@ -11,19 +11,27 @@
 namespace Mofeto.DesktopApplication.Models
 
 {
-    public class FuelType : ModelBase 
-
+    public class ModelTypeModel : ModelBase
     {
 
         #region Fields
 
         private int id;
-        private string title;
+        private string modelName;
 
         #endregion
 
         #region Properties
 
+        public string ModelName
+        {
+            get { return modelName; }
+            set
+            {
+                modelName = value;
+                OnPropertyChanged(nameof(ModelName));
+            }
+        }
         public int Id
         {
             get { return id; }
@@ -31,15 +39,6 @@ namespace Mofeto.DesktopApplication.Models
             {
                 id = value;
                 OnPropertyChanged(nameof(Id));
-            }
-        }
-        public string Title
-        {
-            get { return title; }
-            set
-            {
-                title = value;
-                OnPropertyChanged(nameof(Title));
             }
         }
 

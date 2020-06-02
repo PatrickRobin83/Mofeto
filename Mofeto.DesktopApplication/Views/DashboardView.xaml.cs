@@ -24,7 +24,6 @@ namespace Mofeto.DesktopApplication.Views
         public DashboardView()
         {
             InitializeComponent();
-            DataContext = new DashboardViewModel();
         }
     }
 }

@@ -13,7 +13,6 @@ namespace Mofeto.DesktopApplication.Views
         public CarView()
         {
             InitializeComponent();
-            DataContext = new CarViewModel();
         }
     }
 }

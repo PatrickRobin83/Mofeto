@@ -1,6 +1,6 @@
 ﻿/*
 *----------------------------------------------------------------------------------
-*          Filename:	Car.cs
+*          Filename:	CarModel.cs
 *          Date:        2020.06.01 14:50:53
 *          All rights reserved
 *
@@ -13,17 +13,21 @@ using System.Collections.ObjectModel;
 namespace Mofeto.DesktopApplication.Models
 
 {
-    public class Car : ModelBase
+    public class CarModel : ModelBase
     {
 
         #region Fields
 
         private int id;
-        private Brand brand;
-        private ModelType modelType;
+        private int brandId;
+        private int modelId;
+        private int typeoffuelid;
+        private string brand;
+        private string modelType;
+        private string fuelType;
         private double carTaxPerYear;
         private string insurancePayAgreement;
-        private ObservableCollection<Entry> entries;
+        private ObservableCollection<EntryModel> entries;
         
         #endregion
 
@@ -39,7 +43,37 @@ namespace Mofeto.DesktopApplication.Models
             }
         }
 
-        public ModelType ModelType
+        public int BrandId
+        {
+            get { return brandId; }
+            set
+            {
+                brandId = value;
+                OnPropertyChanged(nameof(BrandId));
+            }
+        }
+
+        public int ModelId
+        {
+            get { return modelId; }
+            set
+            {
+                modelId = value; 
+                OnPropertyChanged(nameof(ModelId));
+            }
+        }
+
+        public int Typeoffuelid
+        {
+            get { return typeoffuelid; }
+            set
+            {
+                typeoffuelid = value; 
+                OnPropertyChanged(nameof(Typeoffuelid));
+            }
+        }
+
+        public string ModelType
         {
             get { return modelType; }
             set
@@ -49,7 +83,17 @@ namespace Mofeto.DesktopApplication.Models
             }
         }
 
-        public Brand Brand
+        public string FuelType
+        {
+            get { return fuelType; }
+            set
+            {
+                fuelType = value;
+                OnPropertyChanged(nameof(fuelType));
+            }
+        }
+
+        public string Brand
         {
             get { return brand; }
             set
@@ -79,7 +123,7 @@ namespace Mofeto.DesktopApplication.Models
             }
         }
 
-        public ObservableCollection<Entry> Entries
+        public ObservableCollection<EntryModel> Entries
         {
             get { return entries; }
             set
@@ -89,9 +133,16 @@ namespace Mofeto.DesktopApplication.Models
             }
         }
 
+        
+
         #endregion
 
         #region Constructor
+
+        public CarModel()
+        {
+            
+        }
 
         #endregion
 

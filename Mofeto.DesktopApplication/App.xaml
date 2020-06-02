@@ -7,6 +7,10 @@
              StartupUri="Views/ApplicationWindow.xaml">
     <Application.Resources>
 
+        <DataTemplate DataType="{x:Type viewmodels:ShellViewModel}">
+            <views:ApplicationWindow />
+        </DataTemplate>
+
         <DataTemplate DataType="{x:Type viewmodels:CarViewModel}">
             <views:CarView />
         </DataTemplate>
