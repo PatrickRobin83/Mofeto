@@ -7,6 +7,26 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800" Background="Aqua">
     <Grid>
-        <TextBlock x:Name="NameOfViewModel" Text="{Binding CarModel.Brand}" FontSize="45" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+        <StackPanel Orientation="Vertical">
+                <Label Content="Fahrzeug Einträge" 
+                       VerticalAlignment="Center" 
+                       HorizontalAlignment="Center" 
+                       FontSize="20"/>
+                <DataGrid Margin="5,0,5,0"
+                          ItemsSource="{Binding Path=CarEntrys}"
+                          AutoGenerateColumns="False" CanUserAddRows="False" CanUserResizeColumns="False" 
+                          CanUserResizeRows="False" SelectedItem="{Binding Path=SelectedEntryModel, Mode=TwoWay}" 
+                          SelectionMode="Single" CanUserSortColumns="False">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header=" Datum " IsReadOnly="True" Binding="{Binding Entrydate}"/>
+                            <DataGridTextColumn Header=" Preis pro Liter in € " IsReadOnly="True" Binding="{Binding PricePerLiter}"/>
+                            <DataGridTextColumn Header=" Abgabemenge in Liter " IsReadOnly="True" Binding="{Binding AmountOffuel}"/>
+                            <DataGridTextColumn Header=" Gesasmtkosten in € " IsReadOnly="True" Binding="{Binding Totalamount}"/>
+                            <DataGridTextColumn Header=" Gefahrene Kiolometer " IsReadOnly="True" Binding="{Binding DrivenDistance}"/>
+                            <DataGridTextColumn Header=" Ø Verbrauch / 100km " IsReadOnly="True" Binding="{Binding ConsumptationPerHundredKilometer}"/>
+                            <DataGridTextColumn Header=" Ø Kosten / 100km" IsReadOnly="True" Binding="{Binding CostPerHundredKilometer}"/>
+                        </DataGrid.Columns>
+                </DataGrid>
+        </StackPanel>
     </Grid>
 </UserControl>

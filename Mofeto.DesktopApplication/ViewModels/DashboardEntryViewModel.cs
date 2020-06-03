@@ -8,6 +8,7 @@
 * @author Patrick Robin <support@rietrob.de>
 */
 
+using System.Collections.ObjectModel;
 using Mofeto.DesktopApplication.Models;
 
 namespace Mofeto.DesktopApplication.ViewModels
@@ -19,6 +20,13 @@ namespace Mofeto.DesktopApplication.ViewModels
         #region Fields
 
         private CarModel carModel;
+        private ObservableCollection<EntryModel> carEntrys;
+
+        private EntryModel selectedEntryModel;
+
+        #endregion
+
+        #region Properties
 
         public CarModel CarModel
         {
@@ -29,10 +37,25 @@ namespace Mofeto.DesktopApplication.ViewModels
                 OnPropertyChanged(nameof(CarModel));
             }
         }
-        
-        #endregion
+        public ObservableCollection<EntryModel> CarEntrys
+        {
+            get { return carEntrys; }
+            set
+            {
+                carEntrys = value;
+                OnPropertyChanged(nameof(CarEntrys));
+            }
+        }
 
-        #region Properties
+        public EntryModel SelectedEntryModel
+        {
+            get { return selectedEntryModel; }
+            set
+            {
+                selectedEntryModel = value;
+                OnPropertyChanged(nameof(SelectedEntryModel));
+            }
+        }
 
         #endregion
 
@@ -40,8 +63,11 @@ namespace Mofeto.DesktopApplication.ViewModels
 
         public DashboardEntryViewModel(CarModel selectedCarModel)
         {
-            CarModel = selectedCarModel;
-            CarModel.Brand = selectedCarModel.Brand;
+            if (selectedCarModel != null)
+            {
+                CarModel = selectedCarModel;
+                CarEntrys = selectedCarModel.Entries;
+            }
         }
 
         #endregion
@@ -53,7 +79,6 @@ namespace Mofeto.DesktopApplication.ViewModels
         #region EventHandler
 
         #endregion
-
 
     }
 }

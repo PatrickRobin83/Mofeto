@@ -75,14 +75,6 @@ namespace Mofeto.DesktopApplication.ViewModels
 
         public DashboardViewModel()
         {
-            AvailableCars = new ObservableCollection<CarModel>();
-            //ToDo: Get Data from real DataSource
-            //CarModel tmp = new CarModel("VW", "Golf VI", "Diesel");
-            //CarModel tmp2 = new CarModel("Citroen", "Berlingo", "Diesel");
-            //CarModel tmp3 = new CarModel("Toyota", "Yaris", "Benzin-Hybrid");
-            //AvailableCars.Add(tmp);
-            //AvailableCars.Add(tmp2);
-            //AvailableCars.Add(tmp3);
             AvailableCars = new ObservableCollection<CarModel>(SqliteDataAccess.LoadCars());
         }
 
