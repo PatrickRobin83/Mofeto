@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Mofeto.DesktopApplication"
         mc:Ignorable="d"
-        Title="{Binding Title}" Height="600" Width="1000" Background="LightBlue">
+        Title="{Binding Title}" Height="700" Width="850" Background="LightBlue"
+        ResizeMode="NoResize">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>

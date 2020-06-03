@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Mofeto.DesktopApplication.Views"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800" Background="Aqua">
+             d:DesignHeight="450" d:DesignWidth="800" Background="LightBlue">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -20,6 +20,8 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="Auto"/>
+
         </Grid.ColumnDefinitions>
         <TextBlock Grid.Row="0" Grid.Column="0" 
                    Grid.ColumnSpan="3" Text="Dashboard" 
@@ -45,19 +47,20 @@
             </DataGrid>
         </StackPanel>
 
-        <ContentControl Grid.Row="4" Grid.Column="0" Grid.RowSpan="3" Content="{Binding SelectedEntryViewModel}"/>
+        <ContentControl Grid.Row="4" Grid.Column="0" Grid.RowSpan="2" Grid.ColumnSpan="3 " Content="{Binding SelectedEntryViewModel}"/>
 
         <StackPanel Grid.Row="1" Grid.Column="1" Grid.RowSpan="3">
             <Button Height="25" Content="Fahrzeug anlegen" Margin="10,35,0,0"></Button>
             <Button Height="25" Content="Fahrzeug ändern" Margin="10,5,0,0"/>
             <Button Height="25" Content="Fahrzeug löschen" Margin="10,5,0,0"/>
         </StackPanel>
-        <StackPanel Grid.Row="4" Grid.Column="1" Grid.RowSpan="3">
-            <Button Height="25" Content="Eintrag anlegen" Margin="10,35,0,0"></Button>
-            <Button Height="25" Content="Eintrag ändern" Margin="10,5,0,0"/>
-            <Button Height="25" Content="Eintrag löschen" Margin="10,5,0,0"/>
+        <StackPanel Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" VerticalAlignment="Bottom" HorizontalAlignment="Left" Orientation="Horizontal">
+            <Button Height="25" Content="Eintrag anlegen" Margin="10,5,0,5"></Button>
+            <Button Height="25" Content="Eintrag ändern" Margin="10,5,0,5"/>
+            <Button Height="25" Content="Eintrag löschen" Margin="10,5,0,5"/>
         </StackPanel>
 
-        <ContentControl Grid.Row="1" Grid.Column="2" Grid.RowSpan="6" Content="{Binding CarDetailsViewModel}"/>
+        <ContentControl Grid.Row="1" Grid.Column="2" Grid.RowSpan="3" Content="{Binding CarDetailsViewModel}"/>
+        <ContentControl Grid.Row="4" Grid.Column="3"/>
     </Grid>
 </UserControl>

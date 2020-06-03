@@ -92,8 +92,5 @@ namespace Mofeto.DesktopApplication.ViewModels
         #region EventHandler
 
         #endregion
-
-
-        
     }
 }
