@@ -68,13 +68,16 @@
       <Link>Properties\SharedAssemblyInfo.cs</Link>
     </Compile>
     <Compile Include="Commands\CloseCommand.cs" />
+    <Compile Include="Commands\DeleteCarCommand.cs" />
+    <Compile Include="Commands\OpenCarDetailsCommand.cs" />
     <Compile Include="Commands\OpenDashboardViewCommand.cs" />
+    <Compile Include="Commands\SaveCarCommand.cs" />
     <Compile Include="DataAccess\SqliteDataAccess.cs" />
     <Compile Include="Models\CarModel.cs" />
     <Compile Include="Models\EntryModel.cs" />
     <Compile Include="Models\ModelTypeModel.cs" />
     <Compile Include="Models\ModelBase.cs" />
-    <Compile Include="ViewModels\CarViewModel.cs" />
+    <Compile Include="ViewModels\CreateCarViewModel.cs" />
     <Compile Include="ViewModels\DashboardEntryViewModel.cs" />
     <Compile Include="ViewModels\DashboardViewModel.cs" />
     <Compile Include="Views\CarView.xaml.cs">
@@ -94,7 +97,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Commands\OpenCarViewCommand.cs" />
+    <Compile Include="Commands\OpenCreateNewCarCommand.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\ShellViewModel.cs" />

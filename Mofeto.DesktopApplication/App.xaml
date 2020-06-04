@@ -11,7 +11,7 @@
             <views:ApplicationWindow />
         </DataTemplate>
 
-        <DataTemplate DataType="{x:Type viewmodels:CarViewModel}">
+        <DataTemplate DataType="{x:Type viewmodels:CreateCarViewModel}">
             <views:CarView />
         </DataTemplate>
 
@@ -23,6 +23,6 @@
             <views:DashboardEntryView />
         </DataTemplate>
 
-
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
     </Application.Resources>
 </Application>

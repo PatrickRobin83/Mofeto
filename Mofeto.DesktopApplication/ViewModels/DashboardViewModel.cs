@@ -9,6 +9,7 @@
 */
 
 using System.Collections.ObjectModel;
+using System.Dynamic;
 using System.Windows.Input;
 using Mofeto.DesktopApplication.Commands;
 using Mofeto.DesktopApplication.DataAccess;
@@ -24,8 +25,11 @@ namespace Mofeto.DesktopApplication.ViewModels
         #region Fields
 
         private DashboardEntryViewModel selectedEntryViewModel;
+        private CreateCarViewModel carViewModel;
         private CarModel selectedCarModel;
         private ObservableCollection<CarModel> availableCars;
+        private bool carIsSelected;
+
 
         #endregion
 
@@ -41,7 +45,15 @@ namespace Mofeto.DesktopApplication.ViewModels
 
             }
         }
-
+        public CreateCarViewModel CarViewModel
+        {
+            get { return carViewModel; }
+            set
+            {
+                carViewModel = value;
+                OnPropertyChanged(nameof(CarViewModel));
+            }
+        }
         public CarModel SelectedCarModel
         {
             get
@@ -53,9 +65,9 @@ namespace Mofeto.DesktopApplication.ViewModels
                 selectedCarModel = value;
                 OnPropertyChanged(nameof(SelectedCarModel));
                 ShowSelectedEntryViewModel();
+                CarIsSelected = SelectedCarModel != null;
             }
         }
-
         public ObservableCollection<CarModel> AvailableCars
         {
             get
@@ -68,7 +80,23 @@ namespace Mofeto.DesktopApplication.ViewModels
                 OnPropertyChanged(nameof(AvailableCars));
             }
         }
-        
+        public ICommand OpenCreateNewCarCommand { get; private set; }
+        public ICommand OpenCarDetailsCommand { get; private set; }
+        public ICommand DeleteCarCommand { get; private set; }
+        public bool CarIsSelected
+        {
+            get
+            {
+                return carIsSelected;
+            }
+            set
+            {
+                carIsSelected = value;
+                OnPropertyChanged(nameof(CarIsSelected));
+            }
+        }
+
+
         #endregion
 
         #region Constructor
@@ -76,6 +104,9 @@ namespace Mofeto.DesktopApplication.ViewModels
         public DashboardViewModel()
         {
             AvailableCars = new ObservableCollection<CarModel>(SqliteDataAccess.LoadCars());
+            OpenCreateNewCarCommand = new OpenCreateNewCarCommand(this);
+            OpenCarDetailsCommand = new OpenCarDetailsCommand(this);
+            DeleteCarCommand = new DeleteCarCommand(this);
         }
 
         #endregion
@@ -86,6 +117,37 @@ namespace Mofeto.DesktopApplication.ViewModels
         {
             SelectedEntryViewModel = new DashboardEntryViewModel(SelectedCarModel);
         }
+
+        public bool CanShowCarDetailsView()
+        {
+            bool canShow = SelectedCarModel != null;
+
+            return canShow;
+        }
+
+        public void CreateNewCar()
+        {
+            
+            CarViewModel = new CreateCarViewModel();
+        }
+
+        public void EditCar()
+        {
+            CarViewModel = new CreateCarViewModel(selectedCarModel);
+        }
+
+        public bool CanDeleteCar()
+        {
+            bool canDelete = SelectedCarModel != null;
+
+            return canDelete;
+        }
+
+        public void DeleteCar()
+        {
+            DataAccess.SqliteDataAccess.DeleteCar(selectedCarModel);
+        }
+
 
         #endregion
 

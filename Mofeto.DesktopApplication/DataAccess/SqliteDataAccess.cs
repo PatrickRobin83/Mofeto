@@ -8,6 +8,7 @@
 * @author Patrick Robin <support@rietrob.de>
 */
 
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Configuration;
@@ -26,7 +27,7 @@ namespace Mofeto.DesktopApplication.DataAccess
 
         #region Fields
 
-        
+
 
         #endregion
 
@@ -40,11 +41,8 @@ namespace Mofeto.DesktopApplication.DataAccess
 
         #region Methods
 
-        private static string LoadConnectionString(string id = "Default")
-        {
-            return ConfigurationManager.ConnectionStrings[id].ConnectionString;
-        } 
 
+        #region Car Operations
         public static List<CarModel> LoadCars()
         {
             List<CarModel> allCarModels = new List<CarModel>();
@@ -69,7 +67,7 @@ namespace Mofeto.DesktopApplication.DataAccess
         {
             using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
             {
-
+                throw new NotImplementedException("Not implemented Yet");
             }
 
         }
@@ -78,10 +76,28 @@ namespace Mofeto.DesktopApplication.DataAccess
         {
             using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
             {
-
+                throw new NotImplementedException("Not implemented Yet");
             }
         }
 
+        public static void DeleteCar(CarModel carToDelete)
+        {
+            using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
+            {
+                throw new NotImplementedException("Not implemented Yet");
+            }
+        }
+
+        #endregion
+        
+        #region private Methods
+
+        private static string LoadConnectionString(string id = "Default")
+        {
+            return ConfigurationManager.ConnectionStrings[id].ConnectionString;
+        }
+
+        #endregion
 
         #endregion
 

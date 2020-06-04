@@ -21,7 +21,6 @@ namespace Mofeto.DesktopApplication.ViewModels
 
         private CarModel carModel;
         private ObservableCollection<EntryModel> carEntrys;
-
         private EntryModel selectedEntryModel;
 
         #endregion

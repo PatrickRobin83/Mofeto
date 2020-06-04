@@ -23,12 +23,8 @@
             <ColumnDefinition Width="Auto"/>
 
         </Grid.ColumnDefinitions>
-        <TextBlock Grid.Row="0" Grid.Column="0" 
-                   Grid.ColumnSpan="3" Text="Dashboard" 
-                   TextAlignment="Center" HorizontalAlignment="Center" 
-                   VerticalAlignment="Center" FontSize="48"/>
 
-        <StackPanel Grid.Row="1" Grid.Column="0" Grid.RowSpan="3" Orientation="Vertical">
+        <StackPanel Grid.Row="0" Grid.Column="0" Grid.RowSpan="3" Orientation="Vertical">
             <Label Content="Angelegte Fahrzeuge" 
                    VerticalAlignment="Center" 
                    HorizontalAlignment="Center" 
@@ -47,20 +43,21 @@
             </DataGrid>
         </StackPanel>
 
-        <ContentControl Grid.Row="4" Grid.Column="0" Grid.RowSpan="2" Grid.ColumnSpan="3 " Content="{Binding SelectedEntryViewModel}"/>
+        <ContentControl Grid.Row="3" Grid.Column="0" Grid.RowSpan="2" Grid.ColumnSpan="3 " Content="{Binding SelectedEntryViewModel}" Visibility="{Binding CarIsSelected, Converter={StaticResource BooleanToVisibilityConverter}}"/>
 
-        <StackPanel Grid.Row="1" Grid.Column="1" Grid.RowSpan="3">
-            <Button Height="25" Content="Fahrzeug anlegen" Margin="10,35,0,0"></Button>
-            <Button Height="25" Content="Fahrzeug ändern" Margin="10,5,0,0"/>
-            <Button Height="25" Content="Fahrzeug löschen" Margin="10,5,0,0"/>
+        <StackPanel Grid.Row="0" Grid.Column="1" Grid.RowSpan="3">
+            <Button Height="25" Content="Fahrzeug anlegen" Margin="10,35,0,0" Command="{Binding OpenCreateNewCarCommand}"/>
+            <Button Height="25" Content="Fahrzeug ändern" Margin="10,5,0,0" Command="{Binding OpenCarDetailsCommand}"/>
+            <Button Height="25" Content="Fahrzeug löschen" Margin="10,5,0,0" Command="{Binding DeleteCarCommand}"/>
         </StackPanel>
+
         <StackPanel Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" VerticalAlignment="Bottom" HorizontalAlignment="Left" Orientation="Horizontal">
             <Button Height="25" Content="Eintrag anlegen" Margin="10,5,0,5"></Button>
             <Button Height="25" Content="Eintrag ändern" Margin="10,5,0,5"/>
             <Button Height="25" Content="Eintrag löschen" Margin="10,5,0,5"/>
         </StackPanel>
 
-        <ContentControl Grid.Row="1" Grid.Column="2" Grid.RowSpan="3" Content="{Binding CarDetailsViewModel}"/>
-        <ContentControl Grid.Row="4" Grid.Column="3"/>
+        <ContentControl Margin="5,5,0,0"  Grid.Row="0" Grid.Column="2" Grid.RowSpan="3" Content="{Binding CarViewModel}"/>
+        <ContentControl Grid.Row="3" Grid.Column="3"/>
     </Grid>
 </UserControl>

@@ -22,7 +22,7 @@ namespace Mofeto.DesktopApplication.ViewModels
         #region Fields
 
         private string title;
-        private CarViewModel carViewModel;
+        private CreateCarViewModel _createCarViewModel;
         private DashboardViewModel dashboardViewModel;
         private object selectedViewModel;
 
@@ -42,8 +42,6 @@ namespace Mofeto.DesktopApplication.ViewModels
                 OnPropertyChanged(nameof(Title));
             }
         }
-        public ICommand OpenCarViewCommand { get; private set; }
-        public ICommand OpenDashboardViewCommand { get; private set; }
         public ICommand CloseCommand { get; private set; }
         public object SelectedViewModel
          {
@@ -77,7 +75,7 @@ namespace Mofeto.DesktopApplication.ViewModels
 
             #region ViewModel initialisation
 
-            carViewModel = new CarViewModel();
+            _createCarViewModel = new CreateCarViewModel();
             dashboardViewModel = new DashboardViewModel();
 
             #endregion
@@ -94,7 +92,7 @@ namespace Mofeto.DesktopApplication.ViewModels
         }
         public void OpenCarView()
         {
-            SelectedViewModel = carViewModel;
+            SelectedViewModel = _createCarViewModel;
         }
 
         public void OpenDashboardView()

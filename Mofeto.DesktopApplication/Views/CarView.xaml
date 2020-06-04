@@ -6,7 +6,8 @@
              xmlns:local="clr-namespace:Mofeto.DesktopApplication.Views"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800" Background="Aquamarine">
-    <Grid>
-            <TextBlock Text="CarModel View" FontSize="45" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
-    </Grid>
+
+    <StackPanel>
+            <TextBlock Text="{Binding Title, FallbackValue='TestCarView'}" FontSize="45" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+    </StackPanel>
 </UserControl>

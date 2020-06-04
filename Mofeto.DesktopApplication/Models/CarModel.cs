@@ -17,123 +17,21 @@ namespace Mofeto.DesktopApplication.Models
     {
 
         #region Fields
-
-        private int id;
-        private int brandId;
-        private int modelId;
-        private int typeoffuelid;
-        private string brand;
-        private string modelType;
-        private string fuelType;
-        private double carTaxPerYear;
-        private string insurancePayAgreement;
-        private ObservableCollection<EntryModel> entries;
-        
         #endregion
 
         #region Properties
 
-        public int Id
-        {
-            get { return id; }
-            set
-            {
-                id = value;
-                OnPropertyChanged(nameof(Id));
-            }
-        }
-
-        public int BrandId
-        {
-            get { return brandId; }
-            set
-            {
-                brandId = value;
-                OnPropertyChanged(nameof(BrandId));
-            }
-        }
-
-        public int ModelId
-        {
-            get { return modelId; }
-            set
-            {
-                modelId = value; 
-                OnPropertyChanged(nameof(ModelId));
-            }
-        }
-
-        public int Typeoffuelid
-        {
-            get { return typeoffuelid; }
-            set
-            {
-                typeoffuelid = value; 
-                OnPropertyChanged(nameof(Typeoffuelid));
-            }
-        }
-
-        public string ModelType
-        {
-            get { return modelType; }
-            set
-            {
-                modelType = value;
-                OnPropertyChanged(nameof(ModelType));
-            }
-        }
-
-        public string FuelType
-        {
-            get { return fuelType; }
-            set
-            {
-                fuelType = value;
-                OnPropertyChanged(nameof(fuelType));
-            }
-        }
-
-        public string Brand
-        {
-            get { return brand; }
-            set
-            {
-                brand = value;
-                OnPropertyChanged(nameof(Brand));
-            }
-        }
-
-        public double CarTaxPerYear
-        {
-            get { return carTaxPerYear; }
-            set
-            {
-                carTaxPerYear = value;
-                OnPropertyChanged(nameof(CarTaxPerYear));
-            }
-        }
-
-        public string InsurancePayAgreement
-        {
-            get { return insurancePayAgreement; }
-            set
-            {
-                insurancePayAgreement = value;
-                OnPropertyChanged(nameof(InsurancePayAgreement));
-            }
-        }
-
-        public ObservableCollection<EntryModel> Entries
-        {
-            get { return entries; }
-            set
-            {
-                entries = value;
-                OnPropertyChanged(nameof(Entries));
-            }
-        }
-
-        
+        public int Id { get; set; }
+        public int BrandId { get; set; }
+        public int ModelId { get; set; }
+        public int Typeoffuelid { get; set; }
+        public string ModelType { get; set; }
+        public string FuelType { get; set; }
+        public string Brand { get; set; }
+        public double CarTaxPerYear { get; set; }
+        public string InsurancePayAgreement { get; set; }
+        public ObservableCollection<EntryModel> Entries { get; set; }
+        public double InsuranceCosts { get; set; }
 
         #endregion
 

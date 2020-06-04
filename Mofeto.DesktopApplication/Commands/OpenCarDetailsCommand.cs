@@ -1,27 +1,26 @@
 ﻿/*
-*----------------------------------------------------------------------------------
-*          Filename:	OpenCarViewCommand.cs
-*          Date:        2020.05.31 21:57:10
-*          All rights reserved
-*
-*----------------------------------------------------------------------------------
-* @author Patrick Robin <support@rietrob.de>
-*/
+ * -----------------------------------------------------------------------------
+ *	 
+ *   Filename		:   OpenCarDetailsCommand.cs
+ *   Date			:   2020-06-04 13:24:36
+ *   All rights reserved
+ * 
+ * -----------------------------------------------------------------------------
+ * @author     Patrick Robin <support@rietrob.de>
+ * @Version      1.0.0
+ */
 
 using System;
-using System.Runtime.Serialization.Formatters;
 using System.Windows.Input;
 using Mofeto.DesktopApplication.ViewModels;
 
 namespace Mofeto.DesktopApplication.Commands
-
 {
-    public class OpenCarViewCommand : ICommand
+    public class OpenCarDetailsCommand : ICommand
     {
-
         #region Fields
 
-        private readonly ShellViewModel shellViewModel;
+        private readonly DashboardViewModel dashboardViewModel;
 
         #endregion
 
@@ -31,9 +30,9 @@ namespace Mofeto.DesktopApplication.Commands
 
         #region Constructor
 
-        public OpenCarViewCommand(ShellViewModel shellViewModel)
+        public OpenCarDetailsCommand(DashboardViewModel dashboardViewModel)
         {
-            if (shellViewModel != null) this.shellViewModel = shellViewModel;
+            if (dashboardViewModel != null) this.dashboardViewModel = dashboardViewModel;
         }
 
         #endregion
@@ -51,12 +50,12 @@ namespace Mofeto.DesktopApplication.Commands
         }
         public bool CanExecute(object parameter)
         {
-            return true;
+            return dashboardViewModel.CanShowCarDetailsView();
         }
 
         public void Execute(object parameter)
         {
-            shellViewModel.OpenCarView();
+            dashboardViewModel.EditCar();
         }
         #endregion
     }
