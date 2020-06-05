@@ -18,11 +18,10 @@ namespace Mofeto.DesktopApplication.Commands
 {
     public class SaveCarCommand : ICommand
     {
-        
-
         #region Fields
 
         private CreateCarViewModel createCarViewModel;
+
         #endregion
 
         #region Properties
@@ -30,12 +29,10 @@ namespace Mofeto.DesktopApplication.Commands
         #endregion
 
         #region Constructor
-
         public SaveCarCommand(CreateCarViewModel createCarViewModel)
         {
             this.createCarViewModel = createCarViewModel;
         }
-
         #endregion
 
         #region Methods
@@ -46,12 +43,10 @@ namespace Mofeto.DesktopApplication.Commands
         {
            return true;
         }
-
         public void Execute(object parameter)
         {
-            createCarViewModel.SaveCar();
+            createCarViewModel.SaveCar(createCarViewModel.CarModel);
         }
-
         public event EventHandler CanExecuteChanged
         {
             add { CommandManager.RequerySuggested += value; }

@@ -73,8 +73,10 @@
     <Compile Include="Commands\OpenDashboardViewCommand.cs" />
     <Compile Include="Commands\SaveCarCommand.cs" />
     <Compile Include="DataAccess\SqliteDataAccess.cs" />
+    <Compile Include="Models\BrandModel.cs" />
     <Compile Include="Models\CarModel.cs" />
     <Compile Include="Models\EntryModel.cs" />
+    <Compile Include="Models\FuelTypeModel.cs" />
     <Compile Include="Models\ModelTypeModel.cs" />
     <Compile Include="Models\ModelBase.cs" />
     <Compile Include="ViewModels\CreateCarViewModel.cs" />

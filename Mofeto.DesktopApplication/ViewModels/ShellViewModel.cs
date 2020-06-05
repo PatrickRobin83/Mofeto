@@ -12,6 +12,7 @@ using System;
 using System.Windows.Input;
 using System.Xaml;
 using Mofeto.DesktopApplication.Commands;
+using Mofeto.DesktopApplication.Models;
 using Mofeto.DesktopApplication.Views;
 
 namespace Mofeto.DesktopApplication.ViewModels

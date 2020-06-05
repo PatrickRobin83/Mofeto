@@ -24,10 +24,10 @@ namespace Mofeto.DesktopApplication.Models
         public int Id { get; set; }
         public int BrandId { get; set; }
         public int ModelId { get; set; }
-        public int Typeoffuelid { get; set; }
-        public string ModelType { get; set; }
-        public string FuelType { get; set; }
-        public string Brand { get; set; }
+        public int TypeoffuelId { get; set; }
+        public ModelTypeModel ModelType { get; set; }
+        public FuelTypeModel FuelType { get; set; }
+        public BrandModel Brand { get; set; }
         public double CarTaxPerYear { get; set; }
         public string InsurancePayAgreement { get; set; }
         public ObservableCollection<EntryModel> Entries { get; set; }
@@ -39,7 +39,12 @@ namespace Mofeto.DesktopApplication.Models
 
         public CarModel()
         {
-            
+            Brand = new BrandModel();
+            ModelType = new ModelTypeModel();
+            FuelType = new FuelTypeModel();
+            Brand.Id = BrandId;
+            ModelType.Id = ModelId;
+            FuelType.Id = TypeoffuelId;
         }
 
         #endregion

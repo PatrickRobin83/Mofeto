@@ -5,9 +5,33 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Mofeto.DesktopApplication.Views"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800" Background="Aquamarine">
+             d:DesignHeight="450" d:DesignWidth="800" Background="Aquamarine"
+             Visibility="{Binding SaveCarCommandExecutet, Converter={StaticResource BooleanToVisibilityConverter}}">
 
-    <StackPanel>
-            <TextBlock Text="{Binding Title, FallbackValue='TestCarView'}" FontSize="45" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+    <StackPanel Orientation="Horizontal">
+        <StackPanel Orientation="Vertical">
+            <Label FontSize="14" Content="Fahrzeugmarke: "/>
+            <Label FontSize="14" Content="Fahrzeugmodel: "/>
+            <Label FontSize="14" Content="Kraftstoffart: "/>
+        </StackPanel>
+        <StackPanel Orientation="Vertical" HorizontalAlignment="Left">
+            
+            <ComboBox Margin="0,5,0,0" ItemsSource="{Binding AvailableBrands}" 
+                      SelectedItem="{Binding Path=SelectedBrand, UpdateSourceTrigger=PropertyChanged}" 
+                      IsSynchronizedWithCurrentItem="True" Width="100"/>
+            
+            <ComboBox Margin="0,5,0,0" ItemsSource="{Binding AvailableCarModels}" 
+                      SelectedItem="{Binding Path=ModelType, UpdateSourceTrigger=PropertyChanged}" 
+                      IsSynchronizedWithCurrentItem="True" Width="100"/>
+            
+            <ComboBox Margin="0,5,0,0" ItemsSource="{Binding AvailableFuelTypes}" 
+                      SelectedItem="{Binding Path=FuelType, UpdateSourceTrigger=PropertyChanged}" 
+                      IsSynchronizedWithCurrentItem="True" Width="100"/>
+        </StackPanel>
+        <StackPanel Orientation="Vertical" VerticalAlignment="Bottom" HorizontalAlignment="Right">
+
+            <Button Content="Fahrzeug speichern" Margin="0,0,0,5" Command="{Binding SaveCarCommand}"/>
+
+        </StackPanel>
     </StackPanel>
 </UserControl>

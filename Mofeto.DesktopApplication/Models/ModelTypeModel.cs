@@ -50,6 +50,11 @@ namespace Mofeto.DesktopApplication.Models
 
         #region Methods
 
+        public override string ToString()
+        {
+            return ModelName;
+        }
+
         #endregion
 
         #region EventHandler
