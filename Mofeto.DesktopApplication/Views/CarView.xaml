@@ -9,29 +9,57 @@
              Visibility="{Binding SaveCarCommandExecutet, Converter={StaticResource BooleanToVisibilityConverter}}">
 
     <StackPanel Orientation="Horizontal">
-        <StackPanel Orientation="Vertical">
-            <Label FontSize="14" Content="Fahrzeugmarke: "/>
-            <Label FontSize="14" Content="Fahrzeugmodel: "/>
-            <Label FontSize="14" Content="Kraftstoffart: "/>
-        </StackPanel>
-        <StackPanel Orientation="Vertical" HorizontalAlignment="Left">
-            
-            <ComboBox Margin="0,5,0,0" ItemsSource="{Binding AvailableBrands}" 
-                      SelectedItem="{Binding Path=SelectedBrand, UpdateSourceTrigger=PropertyChanged}" 
-                      IsSynchronizedWithCurrentItem="True" Width="100"/>
-            
-            <ComboBox Margin="0,5,0,0" ItemsSource="{Binding AvailableCarModels}" 
-                      SelectedItem="{Binding Path=ModelType, UpdateSourceTrigger=PropertyChanged}" 
-                      IsSynchronizedWithCurrentItem="True" Width="100"/>
-            
-            <ComboBox Margin="0,5,0,0" ItemsSource="{Binding AvailableFuelTypes}" 
-                      SelectedItem="{Binding Path=FuelType, UpdateSourceTrigger=PropertyChanged}" 
-                      IsSynchronizedWithCurrentItem="True" Width="100"/>
-        </StackPanel>
-        <StackPanel Orientation="Vertical" VerticalAlignment="Bottom" HorizontalAlignment="Right">
+        <StackPanel Orientation="Vertical" Width="231" HorizontalAlignment="Left">
 
-            <Button Content="Fahrzeug speichern" Margin="0,0,0,5" Command="{Binding SaveCarCommand}"/>
+            <StackPanel Orientation="Horizontal">
+                <Label FontSize="14" Width="120" Content="Fahrzeug Id: "/>
+                <TextBox Width="50" Height="20" IsReadOnly="True" Text="{Binding Id}"/>
+            </StackPanel>
 
+            <StackPanel Orientation="Horizontal">
+
+                <Label FontSize="14" Width="120" Content="Fahrzeugmarke: "/>
+                <ComboBox ItemsSource="{Binding AvailableBrands}" VerticalAlignment="Center"
+                          SelectedItem="{Binding Path=SelectedBrand, UpdateSourceTrigger=PropertyChanged}" 
+                          IsSynchronizedWithCurrentItem="True" Width="100"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
+
+                <Label FontSize="14" Width="120" Content="Fahrzeugmodel: "/>
+                <ComboBox VerticalAlignment="Center" ItemsSource="{Binding AvailableCarModels}" 
+                          SelectedItem="{Binding Path=ModelType, UpdateSourceTrigger=PropertyChanged}" 
+                          IsSynchronizedWithCurrentItem="True" Width="100"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+
+                <Label Width="120" FontSize="14" Content="Kraftstoffart: "/>
+                <ComboBox Margin="0,0,0,0" VerticalAlignment="Center" ItemsSource="{Binding AvailableFuelTypes}" 
+                          SelectedItem="{Binding Path=FuelType, UpdateSourceTrigger=PropertyChanged}" 
+                          IsSynchronizedWithCurrentItem="True" Width="100"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
+
+                <Label Width="120" FontSize="14" Content="Steuer / Jahr: "/>
+                <ComboBox Margin="0,0,0,0" VerticalAlignment="Center" ItemsSource="{Binding AvailableFuelTypes}" 
+                          SelectedItem="{Binding Path=FuelType, UpdateSourceTrigger=PropertyChanged}" 
+                          IsSynchronizedWithCurrentItem="True" Width="100"/>
+            </StackPanel>
+
+        </StackPanel>
+        <StackPanel Orientation="Vertical" Width="245">
+
+            <StackPanel Orientation="Horizontal">
+
+                <Label FontSize="14" Content="Vers. Zahlung: "/>
+                <ComboBox Margin="0,0,0,0" VerticalAlignment="Center" ItemsSource="{Binding AvailableFuelTypes}" 
+                          SelectedItem="{Binding Path=FuelType, UpdateSourceTrigger=PropertyChanged}" 
+                          IsSynchronizedWithCurrentItem="True" Width="100"/>
+            </StackPanel>
+
+
+            <Button Content="Fahrzeug speichern" Margin="0,0,0,5" Command="{Binding SaveCarCommand}" HorizontalAlignment="right" VerticalAlignment="Bottom"/>
         </StackPanel>
     </StackPanel>
 </UserControl>
