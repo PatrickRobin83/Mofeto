@@ -47,7 +47,7 @@ namespace Mofeto.DesktopApplication.DataAccess
             List<CarModel> allCarModels = new List<CarModel>();
             using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
             {
-                allCarModels = cnn.Query<CarModel>("SELECT * FROM Car").ToList();
+                allCarModels = cnn.Query<CarModel>("SELECT * FROM Car WHERE isActive = 1").ToList();
 
                 foreach (CarModel carModel in allCarModels)
                 {
