@@ -11,6 +11,7 @@
 using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Windows;
 using System.Windows.Input;
 using Mofeto.DesktopApplication.Commands;
 using Mofeto.DesktopApplication.DataAccess;
@@ -173,6 +174,8 @@ namespace Mofeto.DesktopApplication.ViewModels
         }
         public ICommand SaveCarCommand { get; set; }
         public ICommand CancelCommand { get; set; }
+
+        public  ICommand OpenAddBrandViewCommand { get; set; }
         public bool SaveCarCommandExecutet
         {
             get
@@ -208,6 +211,7 @@ namespace Mofeto.DesktopApplication.ViewModels
             AvailableBrands = new ObservableCollection<BrandModel>(SqliteDataAccess.LoadAllBrands());
             SaveCarCommand = new SaveCarCommand(this);
             CancelCommand = new CancelCommand(this);
+            OpenAddBrandViewCommand = new OpenAddBrandViewCommand(this);
 
         }
         public CreateCarViewModel(CarModel carModel)
@@ -274,6 +278,11 @@ namespace Mofeto.DesktopApplication.ViewModels
             }
 
             return canExecutet;
+        }
+
+        public void OpenBrandView()
+        {
+            AddBrandViewModel addBrandViewModel = new AddBrandViewModel();
         }
 
         #endregion

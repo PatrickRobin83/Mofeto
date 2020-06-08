@@ -7,7 +7,11 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800" Background="LightBlue">
     <Grid>
-        <StackPanel Orientation="Vertical">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Vertical" Grid.Row="0">
                 <Label Content="Fahrzeug Einträge" 
                        VerticalAlignment="Center" 
                        HorizontalAlignment="Center" 
@@ -27,6 +31,11 @@
                             <DataGridTextColumn Header=" Ø Kosten / 100km" IsReadOnly="True" Binding="{Binding CostPerHundredKilometer}"/>
                         </DataGrid.Columns>
                 </DataGrid>
+        </StackPanel>
+        <StackPanel Grid.Row="1" Orientation="Horizontal">
+            <Button Height="25" Content="Eintrag anlegen" Margin="10,5,0,5"/>
+            <Button Height="25" Content="Eintrag ändern" Margin="10,5,0,5"/>
+            <Button Height="25" Content="Eintrag löschen" Margin="10,5,0,5"/>
         </StackPanel>
     </Grid>
 </UserControl>

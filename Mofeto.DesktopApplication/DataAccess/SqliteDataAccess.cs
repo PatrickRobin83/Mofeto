@@ -66,7 +66,7 @@ namespace Mofeto.DesktopApplication.DataAccess
             using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
             {
                 // Todo: implement the SafeCar Query
-                throw new NotImplementedException("Not implemented Yet");
+                
             }
 
         }
@@ -107,6 +107,45 @@ namespace Mofeto.DesktopApplication.DataAccess
         }
         #endregion
 
+        #region Brand Operations
+
+        public static void AddBrand(string brandName)
+        {
+            //ToDo: Implement method to save and store a brand.
+            using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
+            {
+                string isBrandInDatabase = cnn.Query<string>($"SELECT brandname FROM Brand WHERE {brandName} = brandname").ToString();
+
+                if (isBrandInDatabase != "")
+                {
+                    cnn.Query($"INSERT INTO Brand (id, brandname) VALUES (null, {brandName})");
+                }
+            }
+        }
+
+        #endregion
+
+        #region Model Operations
+
+        public static void AddModel(string modelname, BrandModel brandmodel)
+        {
+            using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
+            {
+                ModelTypeModel carModel = new ModelTypeModel();
+
+                string modelInDatabase = cnn.Query<string>($"SELECT modelname FROM Model WHERE modelname = {modelname}").ToString();
+
+                if (string.IsNullOrEmpty(modelInDatabase))
+                {
+                    cnn.Query($"INSERT INTO Model (id, modelname, brandId) VALUES (null, {modelname}, {brandmodel.Id})");
+                }
+            }
+        }
+
+        #endregion
+
+        #region FuelType
+
         public static List<FuelTypeModel> LoadAllFuelTypes()
         {
             List<FuelTypeModel> fuelTypesList = new List<FuelTypeModel>();
@@ -119,6 +158,8 @@ namespace Mofeto.DesktopApplication.DataAccess
             }
         }
 
+        #endregion
+
         #region private Methods
 
         private static string LoadConnectionString(string id = "Default")
@@ -129,6 +170,11 @@ namespace Mofeto.DesktopApplication.DataAccess
         #endregion
 
         #endregion
+
+
+
+
+
 
         #region EventHandler
 

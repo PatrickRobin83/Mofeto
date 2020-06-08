@@ -67,6 +67,7 @@
     <Compile Include="..\.shared\SharedAssemblyInfo.cs">
       <Link>Properties\SharedAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="Commands\OpenAddBrandViewCommand.cs" />
     <Compile Include="Commands\CancelCommand.cs" />
     <Compile Include="Commands\CloseCommand.cs" />
     <Compile Include="Commands\DeleteCarCommand.cs" />
@@ -80,9 +81,13 @@
     <Compile Include="Models\FuelTypeModel.cs" />
     <Compile Include="Models\ModelTypeModel.cs" />
     <Compile Include="Models\ModelBase.cs" />
+    <Compile Include="ViewModels\AddBrandViewModel.cs" />
     <Compile Include="ViewModels\CreateCarViewModel.cs" />
     <Compile Include="ViewModels\DashboardEntryViewModel.cs" />
     <Compile Include="ViewModels\DashboardViewModel.cs" />
+    <Compile Include="Views\AddBrandWindow.xaml.cs">
+      <DependentUpon>AddBrandWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\CarView.xaml.cs">
       <DependentUpon>CarView.xaml</DependentUpon>
     </Compile>
@@ -92,6 +97,10 @@
     <Compile Include="Views\DashboardView.xaml.cs">
       <DependentUpon>DashboardView.xaml</DependentUpon>
     </Compile>
+    <Page Include="Views\AddBrandWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\ApplicationWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

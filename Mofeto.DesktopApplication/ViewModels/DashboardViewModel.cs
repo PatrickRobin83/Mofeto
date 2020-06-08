@@ -129,11 +129,13 @@ namespace Mofeto.DesktopApplication.ViewModels
         {
             
             CarViewModel = new CreateCarViewModel();
+            SelectedCarModel = null;
         }
 
         public void EditCar()
         {
             CarViewModel = new CreateCarViewModel(selectedCarModel);
+            SelectedCarModel = null;
         }
 
         public bool CanDeleteCar()

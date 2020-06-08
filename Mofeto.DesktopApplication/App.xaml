@@ -23,6 +23,10 @@
             <views:DashboardEntryView />
         </DataTemplate>
 
+        <DataTemplate DataType="{x:Type viewmodels:AddBrandViewModel}">
+            <views:AddBrandWindow />
+        </DataTemplate>
+
         <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
     </Application.Resources>
 </Application>
