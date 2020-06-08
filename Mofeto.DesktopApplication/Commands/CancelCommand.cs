@@ -1,8 +1,8 @@
 ﻿/*
  * -----------------------------------------------------------------------------
  *	 
- *   Filename		:   SaveCarCommand.cs
- *   Date			:   2020-06-04 15:57:55
+ *   Filename		:   CancelCommand.cs
+ *   Date			:   2020-06-08 11:41:19
  *   All rights reserved
  * 
  * -----------------------------------------------------------------------------
@@ -16,12 +16,13 @@ using Mofeto.DesktopApplication.ViewModels;
 
 namespace Mofeto.DesktopApplication.Commands
 {
-    public class SaveCarCommand : ICommand
+    public class CancelCommand : ICommand
     {
+        
+
         #region Fields
 
         private CreateCarViewModel createCarViewModel;
-
         #endregion
 
         #region Properties
@@ -29,10 +30,12 @@ namespace Mofeto.DesktopApplication.Commands
         #endregion
 
         #region Constructor
-        public SaveCarCommand(CreateCarViewModel createCarViewModel)
+
+        public CancelCommand( CreateCarViewModel carViewModel)
         {
-            this.createCarViewModel = createCarViewModel;
+            this.createCarViewModel = carViewModel;
         }
+
         #endregion
 
         #region Methods
@@ -41,12 +44,14 @@ namespace Mofeto.DesktopApplication.Commands
 
         public bool CanExecute(object parameter)
         {
-           return createCarViewModel.CanSaveCarExecutet();
+            return true;
         }
+
         public void Execute(object parameter)
         {
-            createCarViewModel.SaveCar(createCarViewModel.CarModel);
+            createCarViewModel.CancelCreateCar();
         }
+
         public event EventHandler CanExecuteChanged
         {
             add { CommandManager.RequerySuggested += value; }

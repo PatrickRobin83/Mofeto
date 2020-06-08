@@ -10,6 +10,7 @@
 
 using System;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Windows.Input;
 using Mofeto.DesktopApplication.Commands;
 using Mofeto.DesktopApplication.DataAccess;
@@ -18,25 +19,26 @@ using Mofeto.DesktopApplication.Models;
 namespace Mofeto.DesktopApplication.ViewModels
 
 {
-    public class CreateCarViewModel : BaseViewModel
+    public class CreateCarViewModel : BaseViewModel, IDataErrorInfo
     {
 
         #region Fields
 
         private CarModel carModel;
         private int id;
+        private bool isActive;
         private BrandModel selectedBrand;
         private ModelTypeModel modelType;
         private FuelTypeModel fuelType;
-        private double carTaxPerYear;
-        private string insurancePayAgreement;
-        private double insuranceCosts;
+        private string carTaxPerYear;
+        private string carInsurance;
         private ObservableCollection<EntryModel> entries;
         private ObservableCollection<BrandModel> availableBrands;
         private ObservableCollection<ModelTypeModel> availableCarModels;
         private ObservableCollection<FuelTypeModel> availableFuelTypes;
         private bool saveCarCommandExecutet;
         private string title;
+        private IDataErrorInfo dataErrorInfoImplementation;
 
         #endregion
 
@@ -71,6 +73,19 @@ namespace Mofeto.DesktopApplication.ViewModels
                 OnPropertyChanged(nameof(Id));
             }
         }
+
+        public bool IsActive
+        {
+            get
+            {
+                return isActive;
+            }
+            set
+            {
+                isActive = value;
+                OnPropertyChanged(nameof(IsActive));
+            }
+        }
         public BrandModel SelectedBrand
         {
             get
@@ -102,22 +117,13 @@ namespace Mofeto.DesktopApplication.ViewModels
                 OnPropertyChanged(nameof(FuelType));
             }
         }
-        public double CarTaxPerYear
+        public string CarTaxPerYear
         {
             get { return carTaxPerYear; }
             set
             {
                 carTaxPerYear = value;
                 OnPropertyChanged(nameof(CarTaxPerYear));
-            }
-        }
-        public string InsurancePayAgreement
-        {
-            get { return insurancePayAgreement; }
-            set
-            {
-                insurancePayAgreement = value;
-                OnPropertyChanged(nameof(InsurancePayAgreement));
             }
         }
         public ObservableCollection<EntryModel> Entries
@@ -156,16 +162,17 @@ namespace Mofeto.DesktopApplication.ViewModels
                 OnPropertyChanged(nameof(AvailableFuelTypes));
             }
         }
-        public double InsuranceCosts
+        public string CarInsurance
         {
-            get { return insuranceCosts; }
+            get { return carInsurance; }
             set
-            {
-                insuranceCosts = value; 
-                OnPropertyChanged(nameof(InsuranceCosts));
+            { 
+                carInsurance = value; 
+                OnPropertyChanged(nameof(CarInsurance));
             }
         }
         public ICommand SaveCarCommand { get; set; }
+        public ICommand CancelCommand { get; set; }
         public bool SaveCarCommandExecutet
         {
             get
@@ -179,6 +186,17 @@ namespace Mofeto.DesktopApplication.ViewModels
             }
         }
 
+        public IDataErrorInfo DataErrorInfoImplementation
+        {
+            get { return dataErrorInfoImplementation; }
+            set
+            {
+                dataErrorInfoImplementation = value;
+                OnPropertyChanged(nameof(DataErrorInfoImplementation));
+            }
+        }
+        public string Error { get; }
+
         #endregion
 
         #region Constructor
@@ -189,6 +207,8 @@ namespace Mofeto.DesktopApplication.ViewModels
             SaveCarCommandExecutet = true;
             AvailableBrands = new ObservableCollection<BrandModel>(SqliteDataAccess.LoadAllBrands());
             SaveCarCommand = new SaveCarCommand(this);
+            CancelCommand = new CancelCommand(this);
+
         }
         public CreateCarViewModel(CarModel carModel)
         {
@@ -199,31 +219,29 @@ namespace Mofeto.DesktopApplication.ViewModels
             if (carModel != null)
             {
                 this.Id = carModel.Id;
+                this.IsActive = carModel.IsActive;
                 if (carModel.Brand != null) this.SelectedBrand = carModel.Brand;
                 if (carModel.ModelType != null) this.ModelType = carModel.ModelType;
                 if (carModel.FuelType != null) this.FuelType = carModel.FuelType;
-                if (Math.Abs(carModel.CarTaxPerYear) > 0) this.CarTaxPerYear = carModel.CarTaxPerYear;
-                if (!string.IsNullOrWhiteSpace(carModel.InsurancePayAgreement)) this.InsurancePayAgreement = carModel.InsurancePayAgreement;
+                if (Convert.ToString(carModel.CarTaxPerYear) != null) this.CarTaxPerYear = Convert.ToString(carModel.CarTaxPerYear);
                 if (carModel.Entries != null) this.Entries = carModel.Entries;
-                if (Math.Abs(carModel.InsuranceCosts) > 0) this.InsuranceCosts = carModel.InsuranceCosts;
+                if (Convert.ToString(carModel.CarInsurance) != null) this.CarInsurance = Convert.ToString(carModel.CarInsurance);
                 SaveCarCommand = new SaveCarCommand(this);
+                CancelCommand = new CancelCommand(this);
             }
-
-
-            Title = "Hier kommen die CarDetails";
         }
         #endregion
 
         #region Methods
         public void SaveCar(CarModel carToSave)
         {
+            carToSave.IsActive = IsActive;
             carToSave.Brand = SelectedBrand;
             carToSave.ModelType = ModelType;
             carToSave.FuelType = FuelType;
-            carToSave.CarTaxPerYear = CarTaxPerYear;
-            carToSave.InsurancePayAgreement = InsurancePayAgreement;
+            carToSave.CarTaxPerYear = Convert.ToDouble(CarTaxPerYear);
             carToSave.Entries = Entries;
-            carToSave.InsuranceCosts = InsuranceCosts;
+            carToSave.CarInsurance = Convert.ToDouble(CarInsurance);
 
             if (carToSave.Id > 0)
             {
@@ -239,12 +257,55 @@ namespace Mofeto.DesktopApplication.ViewModels
             SqliteDataAccess.LoadCars();
         }
 
+        public void CancelCreateCar()
+        {
+            SaveCarCommandExecutet = false;
+        }
+
+        public bool CanSaveCarExecutet()
+        {
+            bool canExecutet = false;
+            double tmp = 0;
+
+            if (double.TryParse(CarTaxPerYear, out tmp) && 
+                double.TryParse(CarInsurance, out tmp))
+            {
+                canExecutet = true;
+            }
+
+            return canExecutet;
+        }
+
         #endregion
 
         #region EventHandler
 
-        #endregion
+        public string this[string propertyName]
+        {
+            get
+            {
+                if (propertyName == "CarTaxPerYear")
+                {
+                    double tmp;
+                    if (!Double.TryParse(CarTaxPerYear, out tmp))
+                    {
+                        return "not a double";
+                    }
+                }
+                if (propertyName == "CarInsurance")
+                {
+                    double tmp;
+                    if (!Double.TryParse(CarInsurance, out tmp))
+                    {
+                        return "not a double";
+                    }
+                }
 
+                return null;
+            }
+        }
+
+        #endregion
 
     }
 }

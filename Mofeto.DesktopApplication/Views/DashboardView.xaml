@@ -17,7 +17,7 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="2*"/>
             <ColumnDefinition Width="Auto"/>
@@ -32,12 +32,13 @@
             <DataGrid Margin="5,0,5,0"
                       ItemsSource="{Binding Path=AvailableCars}"
                       AutoGenerateColumns="False" CanUserAddRows="False" CanUserResizeColumns="False" 
-                      CanUserResizeRows="False" SelectedItem="{Binding Path=SelectedCarModel, Mode=TwoWay}" 
+                      CanUserResizeRows="False" SelectedItem="{Binding Path=SelectedCarModel, Mode=TwoWay}"  
                       SelectionMode="Single" CanUserSortColumns="False">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header=" Marke " IsReadOnly="True" Binding="{Binding Brand}"/>
                     <DataGridTextColumn Header=" Model " IsReadOnly="True" Binding="{Binding ModelType}"/>
                     <DataGridTextColumn Header=" Treibstoffart " IsReadOnly="True" Binding="{Binding FuelType}"/>
+                    <DataGridCheckBoxColumn Header="Ist Aktiv" IsReadOnly="True"  Binding="{Binding IsActive}"/>
 
                 </DataGrid.Columns>
             </DataGrid>
@@ -57,7 +58,7 @@
             <Button Height="25" Content="Eintrag löschen" Margin="10,5,0,5"/>
         </StackPanel>
 
-        <ContentControl Margin="5,5,0,0"  Grid.Row="0" Grid.Column="2" Grid.RowSpan="3" Content="{Binding CarViewModel}"/>
+        <ContentControl Margin="5,5,0,0"  Grid.Row="0" Grid.Column="2" Grid.RowSpan="4" Content="{Binding CarViewModel}"/>
         <ContentControl Grid.Row="3" Grid.Column="3"/>
     </Grid>
 </UserControl>

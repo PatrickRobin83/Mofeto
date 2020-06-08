@@ -67,6 +67,7 @@
     <Compile Include="..\.shared\SharedAssemblyInfo.cs">
       <Link>Properties\SharedAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="Commands\CancelCommand.cs" />
     <Compile Include="Commands\CloseCommand.cs" />
     <Compile Include="Commands\DeleteCarCommand.cs" />
     <Compile Include="Commands\OpenCarDetailsCommand.cs" />

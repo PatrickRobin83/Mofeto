@@ -22,6 +22,8 @@ namespace Mofeto.DesktopApplication.Models
         #region Properties
 
         public int Id { get; set; }
+
+        public bool IsActive { get; set; }
         public int BrandId { get; set; }
         public int ModelId { get; set; }
         public int TypeoffuelId { get; set; }
@@ -29,10 +31,9 @@ namespace Mofeto.DesktopApplication.Models
         public FuelTypeModel FuelType { get; set; }
         public BrandModel Brand { get; set; }
         public double CarTaxPerYear { get; set; }
-        public string InsurancePayAgreement { get; set; }
+        public double CarInsurance { get; set; }
         public ObservableCollection<EntryModel> Entries { get; set; }
-        public double InsuranceCosts { get; set; }
-
+        
         #endregion
 
         #region Constructor
